@@ -1,8 +1,10 @@
+// Module responsible for managing the game board state
 const gameboard = (function () {
     const rows = 3;
     const columns = 3;
     const board = [];
 
+    // Initializes a 3x3 board filled with empty spaces
     for (let i = 0; i < rows; i++) {
         board[i] = [];
         for (let j = 0; j < columns; j++) {
@@ -10,8 +12,10 @@ const gameboard = (function () {
         };
     };
 
+    // Returns the current state of the board
     const getBoard = () => board;
 
+    // Resets all board cells to ' '
     const updateBoard = () => {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
@@ -25,11 +29,12 @@ const gameboard = (function () {
 })();
 
 
-
+// Module that controls the game logic (turns, rules, score)
 const game = (function () {
 
     let gameOver = false;
 
+    // Player factory function holding name, mark (X or O), and score
     function Player(name, mark) {
         this.name = name;
         this.mark = mark;
@@ -49,10 +54,12 @@ const game = (function () {
 
     let activePlayer = players[0];
 
+    // Switches to the other player's turn
     const switchPlayerTurn = () => {
         activePlayer = activePlayer === players[0] ? players[1] : players[0];
     }
 
+    // Places the active player's mark on the board, if valid
     const addMark = (row, column) => {
         if (gameOver) return;
 
@@ -67,12 +74,14 @@ const game = (function () {
         switchPlayerTurn();
 
         if (activePlayer === players[1] && !gameOver) {
+            // Simulates the computer's move after a delay
             setTimeout(() => {
                 computerMove()
             }, 400);
         }
     };
 
+    // Checks for a win or draw after each move
     const verifyWin = () => {
 
         const winningCombos = [
@@ -110,10 +119,18 @@ const game = (function () {
 
                 showWin.textContent = `${activePlayer.name} won`
 
+                const div1 = document.querySelector(`[id='${winningCombos[i][0][0]+1}'][data-index='${winningCombos[i][0][1]+1}']`)
+                const div2 = document.querySelector(`[id='${winningCombos[i][1][0]+1}'][data-index='${winningCombos[i][1][1]+1}']`)
+                const div3 = document.querySelector(`[id='${winningCombos[i][2][0]+1}'][data-index='${winningCombos[i][2][1]+1}']`)
+
+                div1.classList.add('display-divs-win')
+                div2.classList.add('display-divs-win')
+                div3.classList.add('display-divs-win')
+
                 activePlayer = players[0]
                 setTimeout(() => {
                     resetGame()
-                }, 600)
+                }, 1000)
                 return true
             }
             
@@ -149,6 +166,7 @@ const game = (function () {
         })()
     }
 
+    // Resets the game board and state
     const resetGame = () => {
         setTimeout(() => {
             gameboard.updateBoard()
@@ -159,7 +177,7 @@ const game = (function () {
     }
 
 
-
+    // Simulates the computer's move after a delay
     const computerMove = () => {
 
         const board = gameboard.getBoard()
@@ -181,6 +199,7 @@ const game = (function () {
        
     }
 
+    // Adds click events to each board square for player interaction
     const addMarkToDOM = () => {
         const squares = document.querySelectorAll('.square')
         squares.forEach((square) => {
@@ -204,6 +223,7 @@ const game = (function () {
 
 })();
 
+// Module that manages DOM manipulation (game start and restart)
 const altDOM = (function() {
 
     const scores = document.querySelector('.scores')
@@ -212,6 +232,7 @@ const altDOM = (function() {
     const showWin = document.querySelector('.win')
     showWin.classList.add('display-none')
 
+    // Recreates the board in the DOM and resets the board state
     function restart() {
         const squares = document.querySelectorAll('.square')
         squares.forEach((square) => {
@@ -234,6 +255,7 @@ const altDOM = (function() {
         gameboard.updateBoard()
     }
 
+    // Handles the game start: sets up player name and start button
     const startBtnF = () => {
         const playerName = document.querySelector('#name');
         const playerOne = document.querySelector('.player1');
@@ -259,7 +281,7 @@ const altDOM = (function() {
             const main = document.querySelector('.main')
             main.appendChild(restartBtn)
 
-
+            // When "Restart" is clicked, clears the board and shows the start screen
             const restartBtnClick = restartBtn.addEventListener('click', () => {
                 restart()
                 scores.classList.add('display-none')

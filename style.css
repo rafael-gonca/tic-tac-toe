@@ -153,6 +153,11 @@ body {
     align-items: center;
 }
 
+
+.squares > .display-divs-win {
+    background-color: #555555;
+}
+
 .squares div:hover {
     cursor: pointer;
 }
