@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'the rum is gone';
+    src: url('therumisgone.woff2') format('woff2'),
+        url('therumisgone.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

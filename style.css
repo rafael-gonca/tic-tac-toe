@@ -1,0 +1,201 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #acabab;
+    /* background-color: #c7c7c7; */
+}
+
+/* * {
+    box-sizing: border-box;
+} */
+
+@font-face {
+    font-family: 'the rum is gone';
+    src: url('fonts/therumisgone.woff2') format('woff2'),
+        url('fonts/therumisgone.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 1fr 12fr 1fr;
+}
+
+.head {
+    grid-row: 1;
+    color: #acabab;
+    font-family: 'the rum is gone';
+    font-size: 30px;
+    background-color: #313131;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.main button {
+    border: none;
+    height: 30px;
+    width: 100px;
+    font-family: 'the rum is gone';
+    border-radius: 8px;
+    background-color: #313131;
+    color: #cccccc;
+    box-shadow: 0px 4px 8px rgb(0, 0, 0, 0.2);
+}
+
+.main button:hover {
+    cursor: pointer;
+    background-color: #4b4b4b;
+}
+
+.main button:active {
+    background-color: #7c7c7c;
+}
+
+.main input {
+    border: none;
+    height: 30px;
+    width: 200px;
+    background-color: #eee;
+    border-radius: 8px;
+    outline: none;
+    font-family: 'Roboto';;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.main input:hover,
+.main input:focus {
+    background-color: #dddddd;
+}
+
+.main label {
+    font-family: 'the rum is gone';
+}
+
+.player {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.player > div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.win {
+    font-family: 'the rum is gone';
+    color: #eee;
+    font-size: 20px;
+    letter-spacing: 20px;
+}
+
+.scores {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    font-family: 'the rum is gone';
+    font-size: 20px;
+    letter-spacing: 5px;
+}
+
+.scores span {
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.board {
+    background-color: #cccccc;
+    /* height: 650px;
+    width: 650px; */
+    height: 41em;
+    width: 41em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    box-shadow: 0px 4px 8px rgb(0, 0, 0, 0.2);
+}
+
+.squares {
+    height: 630px;
+    width: 630px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.squares > div {
+    background-color: #313131;
+    height: 200px;
+    width: 200px;
+    border-radius: 30px;
+    border: 5px solid #cccccc;
+    font-family: 'the rum is gone';
+    font-size: 100px;
+    color: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.squares div:hover {
+    cursor: pointer;
+}
+
+.squares div:active {
+    background-color: #3a3a3a;
+}
+
+.footer {
+    grid-row: 3;
+    font-size: 25px;
+    background-color: #313131;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #acabab;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #acabab;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.footer a img {
+    height: 30px;
+    width: 30px;
+    transition: transform 0.6s ease;
+}
+
+.footer a img:hover {
+    transform: rotate(360deg);
+}
+
+.display-none {
+    display: none;
+}
